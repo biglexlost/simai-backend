@@ -51,7 +51,7 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: isTruthy(env.DOCKER_BUILD),
   },
-  output: isTruthy(env.DOCKER_BUILD) ? 'standalone' : undefined,
+  output: 'standalone',
   turbopack: {
     resolveExtensions: ['.tsx', '.ts', '.jsx', '.js', '.mjs', '.json'],
   },
