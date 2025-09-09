@@ -58,8 +58,32 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true,
     turbopackSourceMaps: false,
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   },
   compress: true,
+  webpack: (config, { isServer }) => {
+    // Optimized for 2GB RAM
+    config.optimization = {
+      ...config.optimization,
+      splitChunks: {
+        chunks: 'all',
+        maxSize: 244000,
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+            maxSize: 244000,
+          },
+        },
+      },
+    }
+    
+    // Allow more parallelism with 2GB RAM
+    config.parallelism = 2
+    
+    return config
+  },
   ...(isDev && {
     allowedDevOrigins: [
       ...(env.NEXT_PUBLIC_APP_URL

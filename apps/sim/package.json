@@ -12,7 +12,7 @@
     "dev:classic": "next dev",
     "dev:sockets": "bun run socket-server/index.ts",
     "dev:full": "concurrently -n \"NextJS,Realtime\" -c \"cyan,magenta\" \"bun run dev\" \"bun run dev:sockets\"",
-    "build": "NODE_OPTIONS='--max-old-space-size=1024' next build",
+    "build": "NODE_OPTIONS='--max-old-space-size=1536' next build",
     "start": "node .next/standalone/server.js",
     "prepare": "cd ../.. && bun husky",
     "db:push": "bunx drizzle-kit push",
