@@ -7,5 +7,5 @@ export NODE_ENV=production
 
 echo "Starting SIM AI on port: $PORT"
 
-# Start Next.js with explicit port and hostname
-exec node .next/standalone/server.js -p $PORT -H 0.0.0.0
+# Start Next.js standalone server
+exec node .next/standalone/server.js
