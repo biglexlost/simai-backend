@@ -59,7 +59,6 @@ const nextConfig: NextConfig = {
     optimizeCss: true,
     turbopackSourceMaps: false,
   },
-  swcMinify: true,
   compress: true,
   ...(isDev && {
     allowedDevOrigins: [
